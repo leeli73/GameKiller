@@ -1,0 +1,9 @@
+{
+    "Address":"0.0.0.0",
+    "Port":53,
+    "CacheFile":"cache",
+    "TTL":3600,
+    "WebAddress":"0.0.0.0",
+    "WebPort":88,
+    "WebPasswd":"lee"
+}

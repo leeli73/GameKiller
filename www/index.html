@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GameKiller</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>GameKiller黑名单管理</h2>
+        <div class="form-group">
+            <label for="email">域名:</label>
+            <input type="text" class="form-control" id="hostname">
+        </div>
+        <button type="button" class="btn" onclick="add()">新增域名</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>域名</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{list}}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script>
+    function add() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                alert(xmlhttp.responseText)
+                window.location = "/"
+            }
+        }
+        var data = "type=add&hostname=" + document.getElementById("hostname").value;
+        xmlhttp.open("POST", "/", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(data);
+    }
+</script>
+
+</html>
